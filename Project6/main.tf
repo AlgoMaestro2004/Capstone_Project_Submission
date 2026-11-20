@@ -1,3 +1,4 @@
+# Project6: S3 website , updated on branch update-terraform
 terraform {
   required_providers {
     aws    = { source = "hashicorp/aws" }
