@@ -1,0 +1,34 @@
+name: Project 18 - Terraform Apply
+ 
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Project18/**'
+      - '.github/workflows/terraform-apply.yml'
+ 
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Project18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init -backend=false
+      - run: terraform validate
+      - run: terraform plan
+ 
+  apply:
+    needs: plan
+    runs-on: ubuntu-latest
+    environment: production
+    defaults:
+      run:
+        working-directory: Project18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init -backend=false
+      - run: terraform apply -auto-approve
