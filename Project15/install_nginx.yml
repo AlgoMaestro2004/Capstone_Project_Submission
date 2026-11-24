@@ -1,0 +1,29 @@
+---
+- name: Configure remote web server with Ansible
+  hosts: webservers
+  become: true
+ 
+  tasks:
+    - name: Install Nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+ 
+    - name: Start and enable Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+ 
+    - name: Create custom web page
+      ansible.builtin.copy:
+        content: |
+          <html>
+          <head><title>Project 15 - Ansible</title></head>
+          <body>
+            <h1>Project 15: Remote Server Configured by Ansible</h1>
+            <p>Nginx was installed on {{ ansible_hostname }} from my controller VM.</p>
+          </body>
+          </html>
+        dest: /usr/share/nginx/html/index.html
+        mode: '0644'
