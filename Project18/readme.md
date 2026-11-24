@@ -1,0 +1,1 @@
+[![Project 18 - Terraform Apply](https://github.com/AlgoMaestro2004/Capstone_Project_Submission/actions/workflows/terraform-apply.yml/badge.svg)](https://github.com/AlgoMaestro2004/Capstone_Project_Submission/actions/workflows/terraform-apply.yml)
