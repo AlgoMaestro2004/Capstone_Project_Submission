@@ -1,0 +1,21 @@
+INCIDENT LOG - Manual Chaos Test (service: shlok-container, image shlok-docker-app, port 8080)
+
+1. BASELINE (healthy)
+2026-11-25 04:57:31  container: running
+2026-11-25 04:57:31  HTTP 200
+
+2. FAULT INJECTED: docker stop shlok-container
+2026-11-25 04:57:32  stop issued
+
+3. FAILURE OBSERVED
+2026-11-25 04:57:35  container: exited
+2026-11-25 04:57:35  HTTP 000
+
+4. RECOVERY: docker start shlok-container
+2026-11-25 04:57:35  start issued
+
+5. RECOVERY VERIFIED
+2026-11-25 04:57:38  container: running
+2026-11-25 04:57:38  HTTP 200
+
+Total time from stop to verified recovery: 7 seconds
